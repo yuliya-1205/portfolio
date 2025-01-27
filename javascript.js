@@ -1,11 +1,14 @@
 window.addEventListener("scroll", function () {
-    var navbar = document.getElementById("navbar");
-    if (window.scrollY > 20) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
+  var navbar = document.getElementById("navbar");
+  var logo = document.getElementById("logoNav");
+  if (window.scrollY > 20) {
+    navbar.classList.add("scrolled");
+    logo.src = "./images/logo-name.png"; // Change to your new image
+  } else {
+    navbar.classList.remove("scrolled");
+    logo.src = "./images/Nav-logo.png"; // Original image
+  }
+});
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
