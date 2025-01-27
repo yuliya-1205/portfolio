@@ -26,6 +26,13 @@
   width: 100%;
 }
 
+.image-container video {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
 .image-container .overlay {
   position: absolute;
   top: 0;
@@ -41,13 +48,13 @@
   color: #ffffff;
   font-size: 24px;
   text-align: center;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-
+  pointer-events: none; /* Ensures the overlay doesn't block video interactions */
 }
 
 .image-container:hover .overlay {
   opacity: 0.9;
 }
+
 
 /* Bring the custom cursor to the top layer */
 .custom-cursor.site-wide {
@@ -235,13 +242,13 @@
   text-underline-offset: 10px;
 }
 .logo-nav {
-  transition: opacity 0.3s ease; /* Match the JavaScript timeout */
+  transition: opacity 0.3s ease; 
 }
 
   
   .scrolled .logo-nav {
     opacity: 0.8;
-    transform: scale(0.95); /* Optional for a slight size change */
+    transform: scale(0.95); 
   }
   
 
