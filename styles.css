@@ -62,7 +62,18 @@
   pointer-events: none;
 }
 
-.nav-link {
+
+.next-prev{
+  color: #3a6e6b;
+  font-size: 25px;
+  font-family: "Urbanist", sans-serif;
+  font-weight: 400;
+}
+.next-prev:hover{
+  color: #3a6e6b;
+}
+
+.nav-link{
   color: #3a6e6b;
   font-size: 32px;
   font-family: "Urbanist", sans-serif;
@@ -251,6 +262,9 @@
     transform: scale(0.95); 
   }
   
+  .garmeo-3{
+    padding-top: 12px;
+  }
 
 
 

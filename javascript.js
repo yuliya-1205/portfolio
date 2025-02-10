@@ -33,7 +33,7 @@ window.addEventListener("scroll", function () {
 
 
 
-document.querySelectorAll('.bg-footer, .btn-contact, .logo-nav, .nav-item, .image-container').forEach(container => {
+document.querySelectorAll('.bg-footer, .btn-contact, .logo-nav, .nav-item, .image-container, .next-prev').forEach(container => {
   container.addEventListener('mouseenter', () => {
       document.querySelector('.custom-cursor.site-wide').style.backgroundColor = '#c4d9d8';
 
