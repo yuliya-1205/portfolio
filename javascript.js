@@ -1,12 +1,12 @@
 window.addEventListener("scroll", function () {
   var navbar = document.getElementById("navbar");
-  var logo = document.getElementById("logoNav");
+  // var logo = document.getElementById("logoNav");
   if (window.scrollY > 20) {
     navbar.classList.add("scrolled");
-    logo.src = "./images/logo-name.png"; // Change to your new image
+    // logo.src = "./images/logo-name.png"; // Change to your new image
   } else {
     navbar.classList.remove("scrolled");
-    logo.src = "./images/Nav-logo.png"; // Original image
+    // logo.src = "./images/Nav-logo.png"; // Original image
   }
 });
 
@@ -74,3 +74,25 @@ navLinks.forEach((link) => {
     this.classList.add("active");
   });
 });
+
+// Get the navbar collapse element
+const navbarCollapse = document.querySelector('.navbar-collapse');
+const navbarToggler = document.querySelector('.navbar-toggler');
+
+// Add scroll event listener to window
+window.addEventListener('scroll', () => {
+    // Check if the navbar menu is expanded
+    if (navbarCollapse.classList.contains('show')) {
+        // Collapse the navbar
+        navbarCollapse.classList.remove('show');
+        
+        // Update the toggler button's aria-expanded attribute
+        navbarToggler.setAttribute('aria-expanded', 'false');
+        
+        // Add the collapsed class back to the toggler button
+        navbarToggler.classList.add('collapsed');
+    }
+});
+
+
+      

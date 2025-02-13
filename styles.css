@@ -4,6 +4,7 @@
 
 * {
   cursor: none !important;
+  font-family: "Urbanist", sans-serif;
 }
 
 .custom-cursor {
@@ -117,6 +118,7 @@
   .right-social-1 {
     margin-right: 10px;
     margin-left: 5px;
+    
   }
   .right-social-2 {
     margin-left: 10px;
@@ -143,38 +145,48 @@
     rgba(255, 255, 255, 0.3) 80%,
     transparent
   );
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
 }
 
 .work-headline {
-  color: #3a6e6b;
+  color: #272727;
   font-size: 50px;
   font-family: "Urbanist", sans-serif;
   font-weight: 400;
+  margin-top: -3px;
+}
+.work-headline-2{
+  color: #272727;
+  font-size: 50px;
+  font-family: "Urbanist", sans-serif;
+  font-weight: 400;
+  margin-top: -7px;
+  line-height: 60px;
 }
 
 .work-details-headline {
-  color: #3a6e6b;
+  color: #272727;
   font-size: 36px;
   font-family: "Urbanist", sans-serif;
   font-weight: 400;
 }
 
 .work-description {
-  color: #3a6e6b;
+  color: #272727;
   font-size: 25px;
   font-family: "Urbanist", sans-serif;
   font-weight: 400;
 }
 .work-title-testing {
-  color: #3a6e6b;
+  color: #272727;
   font-size: 20px;
   font-family: "Urbanist", sans-serif;
   font-weight: 400;
 }
+
 .work-description-testing {
-  color: #ffffff;
-  background-color: #3a6e6b;
+  color: #3a3a3a;
+  background-color: #D4EDEB;
   font-size: 20px;
   font-family: "Urbanist", sans-serif;
   font-weight: 400;
@@ -185,12 +197,10 @@
   background-color: #c4dad8;
 }
 
-.separator {
-  border-bottom: 1px solid #c4dad8;
-}
+
 
 .paid-ads {
-  color: #3a6e6b;
+  color: #272727;
   font-size: 20px;
   font-family: "Urbanist", sans-serif;
   font-weight: 400;
@@ -233,12 +243,39 @@
   padding-left: 60px;
 }
 
-.btn-contact:hover {
+.btn-contact:hover{
   background-color: #006c6b;
   border: 1px solid #006c6b;
   color: #ffffff;
 }
-
+.btn-share{
+  background-color: #006c6b;
+  border: 1px solid #006c6b;
+  color: #ffffff;
+  border-radius: 45px;
+  padding-right: 60px;
+  padding-left: 60px;
+  font-family: "Urbanist", sans-serif;
+}
+.btn-share:hover{
+  background-color: #ffffff;
+  border: 1px solid #006c6b;
+  color: #006c6b;
+}
+.btn-print{
+  background-color: #ffffff;
+  border: 1px solid #006c6b;
+  color: #006c6b;
+  border-radius: 45px;
+  padding-right: 60px;
+  padding-left: 60px;
+  font-family: "Urbanist", sans-serif;
+}
+.btn-print:hover{
+  background-color: #006c6b;
+  border: 1px solid #006c6b;
+  color: #ffffff;
+}
 .email-click:hover {
   text-decoration: underline !important;
 }
@@ -265,7 +302,8 @@
   .garmeo-3{
     padding-top: 12px;
   }
-
-
+.right-nav{
+  
+}
 
   

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+    <title>Resume</title>
     <link rel="icon" type="image/x-icon" href="/images/Nav-logo.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link
@@ -19,6 +19,7 @@
 </head>
 <body>
   <div class="custom-cursor site-wide"></div>
+
   <section class="fixed-top">
     <div class="container">
       <div class="row">
@@ -71,56 +72,128 @@
       </div>
     </nav>
   </section>
-
-      <section class="work-section">
-        <div class="about-section">
-        <div class="container pt-5 mt-4">
-          <div class="work-headline text-center">Hi, I am Yuliya Paredes</div>
-          <div class="row">
-            <div class="col-md-8 m-auto">
-              <div class="work-description mt-4 mb-5">
-                I am a Designer and branding consultant based in sunny South Florida, driven by a passion for using design to create awareness, shape perceptions, and inspire meaningful change. What started as an appreciation for aesthetics has evolved into a deep understanding of design’s power to transform and make an impact.
-                  <br><br>
-                In my free time, I love creating collages, baking, trying my hand at gardening, traveling, and cherishing moments with loved ones.
-              </div>
+<section class="resume-section py-5 mt-5">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-9 m-auto">
+                <img src="./images/document-1.png" alt="" class="w-100">
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <button class="btn btn-share" onclick="shareResume()">
+                       Share
+                    </button>
+                    <!-- Changed to print button -->
+                    <button class="btn btn-print" onclick="printResume()">
+                         Print
+                    </button>
+                </div>
             </div>
-          </div>
-
-          <div class="row mt-5">
-            <div class="col-md-4">
-              <div class="col">
-                <img src="./images/About/About-3.png" alt="" class="w-100 mb-4">
-              </div>
-              <div class="col">
-                <img src="./images/About/About-1.png" alt="" class="w-100 mt-1">
-              </div>
-            </div>
-            <div class="col-md-4">
-              <img src="./images/About/About-5.png" alt="" class="w-100 my-4 my-md-0">
-            </div>
-            <div class="col-md-4">
-              <div class="col">
-                <img src="./images/About/About-2.png" alt="" class="w-100 mb-4">
-              </div>
-              <div class="col">
-                <img src="./images/About/About-4.png" alt="" class="w-100">
-              </div>
-            </div>
-          </div>
-       
-          <div class="buttons-about py-5">
-          <div class="d-flex justify-content-center pt-5">
-          
-            <a href="mailto:someone@example.com"class="btn btn-contact">Contact Me!</a>
         </div>
-
-    <div class="d-flex justify-content-center pb-5 mt-4">
-        <a href="/"class="btn btn-about-see-all">See All <i class="fa-solid fa-arrow-right "></i></a>
     </div>
-  </div>
-        </div>
-      </div>
-      </section>
+</section>
+
+<script>
+
+
+// Share functionality remains the same
+async function shareResume() {
+    const button = event.target.closest('button');
+    const originalText = button.innerHTML;
+    
+    try {
+        button.disabled = true;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sharing...';
+
+        const shareData = {
+            title: 'My Resume',
+            text: 'Check out my resume!',
+            url: window.location.href
+        };
+
+        if (navigator.share) {
+            try {
+                await navigator.share(shareData);
+                showMessage('Resume shared successfully!', 'success');
+            } catch (shareError) {
+                await fallbackToClipboard();
+            }
+        } else {
+            await fallbackToClipboard();
+        }
+    } catch (err) {
+        showMessage('Unable to share resume. Please try again later.');
+        console.error('Sharing failed:', err);
+    } finally {
+        button.disabled = false;
+        button.innerHTML = originalText;
+    }
+}
+
+async function fallbackToClipboard() {
+    try {
+        await navigator.clipboard.writeText(window.location.href);
+        showMessage('Link copied to clipboard!', 'success');
+    } catch (clipboardError) {
+        throw new Error('Clipboard access denied');
+    }
+}
+
+// New print functionality
+function printResume() {
+    const button = event.target.closest('button');
+    const originalText = button.innerHTML;
+    
+    try {
+        // Disable button and show loading state
+        button.disabled = true;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+
+        // Add print-specific styles temporarily
+        const style = document.createElement('style');
+        style.textContent = `
+            @media print {
+                /* Hide everything except the resume section */
+                body > *:not(.resume-section) {
+                    display: none !important;
+                }
+                /* Hide the buttons within the resume section */
+                .resume-section .btn,
+                .resume-section #alertMessage {
+                    display: none !important;
+                }
+                /* Reset any padding/margin for print */
+                .resume-section {
+                    padding: 0 !important;
+                    margin: 0 !important;
+                }
+                /* Ensure image fits on the page */
+                .resume-section img {
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Trigger print dialog
+        window.print();
+
+        // Remove the temporary style after printing
+        setTimeout(() => {
+            document.head.removeChild(style);
+        }, 1000);
+
+        showMessage('Print dialog opened', 'success');
+    } catch (err) {
+        showMessage('Unable to open print dialog. Please try again.');
+        console.error('Print failed:', err);
+    } finally {
+        // Reset button state
+        button.disabled = false;
+        button.innerHTML = originalText;
+    }
+}
+</script>
+
     
 <section>
     <div class="bg-footer">
@@ -136,21 +209,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
