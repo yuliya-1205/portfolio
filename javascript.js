@@ -94,5 +94,114 @@ window.addEventListener('scroll', () => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const backToTopButton = document.querySelector('.back-to-top');
+  
+  backToTopButton.addEventListener('click', function() {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  });
+});
+
+// Share functionality remains the same
+async function shareResume() {
+  const button = event.target.closest('button');
+  const originalText = button.innerHTML;
+  
+  try {
+      button.disabled = true;
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sharing...';
+
+      const shareData = {
+          title: 'My Resume',
+          text: 'Check out my resume!',
+          url: window.location.href
+      };
+
+      if (navigator.share) {
+          try {
+              await navigator.share(shareData);
+              showMessage('Resume shared successfully!', 'success');
+          } catch (shareError) {
+              await fallbackToClipboard();
+          }
+      } else {
+          await fallbackToClipboard();
+      }
+  } catch (err) {
+      showMessage('Unable to share resume. Please try again later.');
+      console.error('Sharing failed:', err);
+  } finally {
+      button.disabled = false;
+      button.innerHTML = originalText;
+  }
+}
+
+async function fallbackToClipboard() {
+  try {
+      await navigator.clipboard.writeText(window.location.href);
+      showMessage('Link copied to clipboard!', 'success');
+  } catch (clipboardError) {
+      throw new Error('Clipboard access denied');
+  }
+}
+
+// New print functionality
+function printResume() {
+  const button = event.target.closest('button');
+  const originalText = button.innerHTML;
+  
+  try {
+      // Disable button and show loading state
+      button.disabled = true;
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+
+      // Add print-specific styles temporarily
+      const style = document.createElement('style');
+      style.textContent = `
+          @media print {
+              /* Hide everything except the resume section */
+              body > *:not(.resume-section) {
+                  display: none !important;
+              }
+              /* Hide the buttons within the resume section */
+              .resume-section .btn,
+              .resume-section #alertMessage {
+                  display: none !important;
+              }
+              /* Reset any padding/margin for print */
+              .resume-section {
+                  padding: 0 !important;
+                  margin: 0 !important;
+              }
+              /* Ensure image fits on the page */
+              .resume-section img {
+                  max-width: 100%;
+                  height: auto;
+              }
+          }
+      `;
+      document.head.appendChild(style);
+
+      // Trigger print dialog
+      window.print();
+
+      // Remove the temporary style after printing
+      setTimeout(() => {
+          document.head.removeChild(style);
+      }, 1000);
+
+      showMessage('Print dialog opened', 'success');
+  } catch (err) {
+      showMessage('Unable to open print dialog. Please try again.');
+      console.error('Print failed:', err);
+  } finally {
+      // Reset button state
+      button.disabled = false;
+      button.innerHTML = originalText;
+  }
+}
 
       

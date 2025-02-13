@@ -302,8 +302,16 @@
   .garmeo-3{
     padding-top: 12px;
   }
-.right-nav{
-  
-}
 
+  .back-to-top {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+  }
   
