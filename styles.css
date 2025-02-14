@@ -109,6 +109,10 @@
   background-color: #016c6a;
 }
 
+.right-social-1{
+  margin-top: 5px;
+}
+
 @media (max-width: 991px) {
   .nav-link.left,
   .left-1 {
@@ -118,7 +122,6 @@
   .right-social-1 {
     margin-right: 10px;
     margin-left: 5px;
-    margin-top: 5px;
     
   }
   .right-social-2 {
