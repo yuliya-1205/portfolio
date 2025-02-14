@@ -111,6 +111,7 @@
 
 .right-social-1{
   margin-top: 5px;
+  margin-left: 10px;
 }
 
 @media (max-width: 991px) {
@@ -121,7 +122,7 @@
   }
   .right-social-1 {
     margin-right: 10px;
-    margin-left: 5px;
+   
     
   }
   .right-social-2 {
