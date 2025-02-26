@@ -291,8 +291,24 @@
 
 .navbar-nav .nav-link.active {
   color: #006c6b !important;
-  text-decoration: underline;
-  text-underline-offset: 10px;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+}
+
+.navbar-nav .nav-link.active::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  right: -2px;
+  bottom: 17px;
+  height: 38%;
+  background-color: #c4d9d8;
+  z-index: -1;
+  transform: rotate(0deg) scale(1, 1);
+  border-radius: 5px 35px 5px 35px;
+  opacity: 0.5;
+  clip-path: polygon(0% 0%, 3% 8%, 12% 3%, 24% 7%, 36% 2%, 47% 6%, 58% 3%, 69% 9%, 80% 4%, 94% 7%, 100% 0%, 100% 100%, 128% 114%, 119% 122%, 78% 126%, 91% 142%, 51% 105%, 40% 86%, 28% 93%, 24% 80%, 34% 117%, 17% 150%);
 }
 .logo-nav {
   transition: opacity 0.3s ease; 
