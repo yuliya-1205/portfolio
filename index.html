@@ -10,6 +10,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     rel="stylesheet"
   />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,7 +77,7 @@
       <section class="work-section mb-4">
         <div class="container pt-3">
             <div class="row">
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-6 mb-4" data-aos="flip-left">
                   <a href="./Ricoma.html"><div class="image-container">
                     <img src="./images/Work-Thumbnails/Ricoma.png" alt="" class="w-100 ">
                     <div class="overlay">
@@ -141,7 +142,7 @@
                 <a href="./Paws.html">
                   <div class="image-container">
                     <video class="w-100" autoplay muted loop playsinline>
-                      <source src="https://media-hosting.imagekit.io//4491bf9027f1439b/Paws.mp4?Expires=1832556745&amp;Key-Pair-Id=K2ZIVPTIP2VGHC&amp;Signature=MpzDSNh~qgsKZt-A7MCs-VigPxYsS-1r4zeCw3Jv1Ks6j2CHhjSyd97hCSGqoc0aHYUzWHfboqwG~5Ua7DxmvwSMltO3V-y2B8QzOWuXFJgU6zTy3fWZVRql1X4jyTemrZ-T~Iu0eaS5tn82LrJjtNRCXHOEp8JmZ75kx6Ki9qrNnjeOHJxUDtVmGFo-j6yPPhTk15FRfiwWLpW~xJANphVqkTNvfxACNB36KcruTwXW0~8U7YSXY5G0pbZB2VHIH4Ep3pAip~5fj1pNoqxkroClJc38tr7ULBDAWRgbVIDZmKPPq7b0-RrhNKAVK~37w7YgFmMWnw8myi~BrOzfgw__" type="video/mp4">
+                      <source src="https://ik.imagekit.io/et05spmyyj/Paws.mp4?updatedAt=1749177879229" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
                     <div class="overlay">
@@ -219,9 +220,15 @@
       </div>
   </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./javascript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
+    <script>
+      AOS.init({
+        duration: 2000
+      });
+    </script>
+          
 </body>
 </html>
 
