@@ -335,4 +335,16 @@
     cursor: pointer;
     font-size: 20px;
   }
+
+  .video-background{
+  width:100%;
+    overflow:hidden;
+    aspect-ratio:1/1;
+    pointer-events:none;   
+  }
+  .video-background iframe{
+  width:300%;
+    height:101%;
+    margin-left: -100%;
+  }
   
